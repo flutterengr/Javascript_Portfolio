@@ -9,21 +9,13 @@
 <body>
     <h1>Iniciar Sesion</h1>
 
-<div id="inputs-login">
-
-    <div>
-
-        <input name="email" class="email" type="text" placeholder="email"> <br> <br>
-
-    <div>
-
-        <input name="password" class="passwordLogin" type="password" placeholder="password"> <br> <br>
-
-    <div>
-
-        <input type="submit" value="Iniciar sesion"> 
-
+<form action="/users/login" method="POST" enctype="multipart/form-data">
+    <div id="inputs-login">
+    <input name="email" class="email" type="text" placeholder="email"> <br> <br>
+    <input name="password" class="passwordLogin" type="password" placeholder="password"> <br> <br>
+    <input type="submit" value="Iniciar sesion"> 
 </div>
+</form>
 
 <h2><a href='/users/register'>Pulsa aqui para crear una cuenta</a></h2>
 
