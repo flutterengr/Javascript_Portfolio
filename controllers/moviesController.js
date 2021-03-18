@@ -10,9 +10,9 @@ const moviesController = {
       const id = req.params.id;
       const movie = await db.Movie.findByPk(id);
       const genre = await db.Genre.findByPk(movie.genre_id);
-      
+      movie.genre = genre.name;
 
-      res.render('detail', {movie,genre});
+      res.render('detail', {movie});
     }
 }
 
