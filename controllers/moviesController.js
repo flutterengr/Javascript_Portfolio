@@ -9,8 +9,10 @@ const moviesController = {
     detail: async (req, res) => {
       const id = req.params.id;
       const movie = await db.Movie.findByPk(id);
-      res.render('detail', {movie});
+      const genre = await db.Genre.findByPk(movie.genre_id);
+      
 
+      res.render('detail', {movie,genre});
     }
 }
 
