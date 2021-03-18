@@ -1,0 +1,38 @@
+<div class="container products-wrapper">
+
+<h2 class="products-title">Formulario de creación de productos</h2>
+      
+<form action="/products/create" method="POST" enctype="multipart/form-data">
+ <div class="row product-detail">
+                 <div class="col-12 col-md-6">
+                    <label for="title" class="form-label">Titulo de la pelicula:</label>
+                    <input type="text" id="title" name="title" placeholder="Ej: Pokemon" class="form-input">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="rating" class="form-label">Rating de la pelicula:</label>
+                    <input type="text" id="rating" name="rating" placeholder="Ej: 8" class="form-input">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="awards" class="form-label">Premios conseguidos:</label>
+                    <input type="text" id="awards" name="awards" placeholder="Ej: 6" class="form-input">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="length" class="form-label">Duracion en minutos:</label>
+                    <input type="text" id="length" name="length" placeholder="Ej: 120" class="form-input">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="realeaseDate" class="form-label">Año de creacion:</label>
+                    <input type="text" id="releaseDate" name="releaseDate" placeholder="Ej: Sun Oct 03 2010 21:00:00 GMT-0300 (GMT-03:00)" class="form-input">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="Genre" class="form-label">Genero:</label>
+                    <input type="text" id="genre" name="genre" placeholder="Ej: Terror" class="form-input">
+                </div>
+
+                
+
+                <div class="col-12">
+                    <button type="submit" class="buy-now-button">Guardar pelicula</button>
+                </div>
+   </div>
+</form>

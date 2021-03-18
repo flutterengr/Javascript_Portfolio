@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>Peliculas</h1>
     <% for(movie of movies) {%> 
     <li><a href="/detail/<%=movie.id%>"><%=movie.title%></a></li>
     <% } %> 
+    <h1><a href="/create">Crear Nueva Pelicula </a></h1>
 </body>
 </html>

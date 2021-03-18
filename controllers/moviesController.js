@@ -21,6 +21,9 @@ const moviesController = {
     
 
       res.render('detail', {movie});
+    },
+    create: (req, res, next) =>{
+      res.render("create");
     }
 }
 
