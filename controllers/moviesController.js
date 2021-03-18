@@ -11,6 +11,14 @@ const moviesController = {
       const movie = await db.Movie.findByPk(id);
       const genre = await db.Genre.findByPk(movie.genre_id);
       movie.genre = genre.name;
+     
+
+      /* Logica actores
+      const actor_movie = await db.Actor_Movie.findByPk(id);
+      const actor = await db.Actor.findByPk(actor_movie.actor_id)
+      actor_movie.name = actor.first_name;
+      */
+    
 
       res.render('detail', {movie});
     }
