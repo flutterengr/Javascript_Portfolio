@@ -29,10 +29,10 @@ const moviesController = {
   },
 
   premiere: async (req, res) => {
-    // const errors = validationResult(req);
-   
-   /* if (!errors.isEmpty()) {
+    //const errors = validationResult(req);
+    /*if (!errors.isEmpty()) {
     console.log('nO ErrorES')*/
+
     const genreName = req.body.genre;
     const genre = await db.Genre.findOne({ where: { name: genreName } });
 
@@ -50,54 +50,41 @@ const moviesController = {
 
      res.render('create');
     
+  },
+  
+  edit: async (req, res) => {
+
+    const id = req.params.id;
+    const movie = await db.Movie.findByPk(id);
+    const genre = await db.Genre.findByPk(movie.genre_id);
+    movie.genre = genre.name;
+
+
+
+   res.render ('edit', {movie});
+
+  },
+
+  update: async (req, res) => {
+
+    const id = req.params.id;
+    const movieToUpdate = await db.Genre.findByPk(id);
+
+    const movieUpdate = {
+      title: req.body.title,
+      rating: req.body.rating,
+      awards: req.body.awards,
+      length: req.body.length,
+      release_date: req.body.releaseDate,
+      genre_id: genre.id
+      }
+      console.log(movie)
+      
+      const newMovie = await db.Movie.create(movieUpdate);
+      res.render('edit');
+
   }
 
-  /*
-  
-    premiere: async (req, res) => {     
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-        const title  = await db.movies.findAll();
-        const rating  = await db.movies.findAll();
-        const awards = await db.movies.findAll();
-        const length = await db.movies.findAll();
-        const releaseDate = await db.movies.findAll();
-        const genre = await db.Genre.findAll();
-
-          return res.render('/create', {
-              errors: errors.mapped(),
-              title : req.body,
-              rating,
-              awards,
-              length,
-              realeaseDate,
-              genre
-          });
-      }
-
-      const newImage = await db.Image.create({name: req.files[0].filename});
-
-      const newModel = await db.Model.create({
-          title: req.body.title,
-          rating: req.body.rating,
-          awards: req.body.awards,
-          length: req.body.length,
-          releaseDate: req.body.releaseDate,
-          genre: req.body.genre
-      },
-      {include: ['title', 'rating', 'awards', 'length', 'releaseDate','genre']});
-
-      await db.Product.create({
-          title_id: newModel.id,
-          rating: req.body.rating,
-          awards: req.body.awards,
-          length: req.body.length,
-          genre: req.body.genre
-      },
-      {include: ['discount', 'model', 'size']});
-
-      return res.redirect('/');*/
 };
 
 module.exports = moviesController;
