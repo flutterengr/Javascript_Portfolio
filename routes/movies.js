@@ -6,14 +6,9 @@ const moviesController = require("../controllers/moviesController")
 /* GET home page. */
 router.get('/', moviesController.list);
 router.get('/detail/:id', moviesController.detail);
-router.get('/create', function(req, res, next) {
-    res.render('create');
-  });
+router.get('/create', moviesController.create);
+router.post('/create', moviesController.premiere);
 
-/* Añadir nueva pelicula 
-router.get('/create', productsController.create);
-router.post('/create', upload.any(),  productsController.premiere);
-*/
 
 
 module.exports = router;
