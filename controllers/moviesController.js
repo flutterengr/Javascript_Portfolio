@@ -23,7 +23,7 @@ const moviesController = {
 
     res.render("detail", { movie });
   },
-  
+
   create: (req, res) => {
     res.render("create");
   },
@@ -42,31 +42,25 @@ const moviesController = {
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: genre.id
-      }
-      console.log(movie)
-     
-     const newMovie = await db.Movie.create(movie);
+      genre_id: genre.id,
+    };
+    console.log(movie);
 
-     res.render('create');
-    
+    const newMovie = await db.Movie.create(movie);
+
+    res.render("create");
   },
-  
-  edit: async (req, res) => {
 
+  edit: async (req, res) => {
     const id = req.params.id;
     const movie = await db.Movie.findByPk(id);
     const genre = await db.Genre.findByPk(movie.genre_id);
     movie.genre = genre.name;
 
-
-
-   res.render ('edit', {movie});
-
+    res.render("edit", { movie });
   },
 
   update: async (req, res) => {
-
     const id = req.params.id;
     const movieToUpdate = await db.Genre.findByPk(id);
 
@@ -76,15 +70,20 @@ const moviesController = {
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: genre.id
-      }
-      console.log(movie)
-      
-      const newMovie = await db.Movie.create(movieUpdate);
-      res.render('edit');
+      genre_id: genre.id,
+    };
+    console.log(movie);
 
-  }
+    const newMovie = await db.Movie.create(movieUpdate);
+    res.render("edit");
+  },
 
+  delete: async (req, res) => {
+    await db.Product.destroy({
+      where: {id: req.params.id,},
+    });
+    return res.redirect("/");
+  },
 };
 
 module.exports = moviesController;

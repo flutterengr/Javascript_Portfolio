@@ -10,6 +10,7 @@ router.get('/create', moviesController.create);
 router.post('/create', moviesController.premiere);
 router.get('/edit/:id', moviesController.edit);
 router.put('/edit/:id', moviesController.update);
+router.delete('/delete/:id', moviesController.delete);
 
 
 
