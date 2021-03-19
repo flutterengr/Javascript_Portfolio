@@ -8,7 +8,10 @@
 <body>
     <h1>Peliculas</h1>
     <% for(movie of movies) {%> 
-    <li><a href="/movies/detail/<%=movie.id%>"><%=movie.title%></a></li>
+    <li><a href="/detail/<%=movie.id%>"><%=movie.title%></a></li>
     <% } %> 
+    <h2><a href="/create">Crear nueva pelicula </a></h2>
+    <h2><a href="/users/login">Iniciar sesion </a></h2>
+    <h2><a href="/users/register">Registrate </a></h2>
 </body>
 </html>

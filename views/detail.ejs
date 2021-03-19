@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=movie.title %></title>
+</head>
+<body>
+    <h1><%=movie.title %></h1>
+    <ul>
+        <li>Rating: <%=movie.rating%></li>
+        <li>Awards: <%=movie.awards%></li>
+        <li>Length: <%=movie.length%></li>
+        <li>Release Date: <%=movie.release_date%></li>
+        <li>Genre: <%=movie.genre%></li> 
+        <li>Actors: </li>
+    </ul>
+
+
+    
+     <!--BOTON EDITAR-->
+    <form action="" method="GET">
+        <a href="/edit/<%=movie.id%>"><button type="button" class="boton5">Editar artículo</button></a>
+    </form>
+
+     <!--BOTON ELIMINAR-->
+
+             <form action="/delete/<%=movie.id%>" method="POST"> <br>
+                 <button type="submit" >Eliminar artículo</button> 
+             </form>
+         </div> 
+
+  <h2><a href="/">HOME </a></h2>
+
+
+   
+</body>
+</html>
