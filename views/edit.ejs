@@ -1,7 +1,7 @@
 <div class="container products-wrapper">
     <h1 class="products-title">Esta editando la pelicula: <%=movie.title%> </h1>
   
-    <form action="/edit/<%= movie.id %>" method="PUT">
+    <form action="/edit/<%= movie.id %>?_method=PUT" method="POST" >
       <div class="product-detail">
         <div class="col">
           <label for="title" class="form-label">Titulo de la pelicula:</label>

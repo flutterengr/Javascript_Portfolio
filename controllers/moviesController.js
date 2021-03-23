@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const {check, validationResult, body} = require('express-validator');
 
 const moviesController = {
   /* Listo las peliculas en la homepage*/
@@ -29,10 +30,7 @@ const moviesController = {
   },
 
   premiere: async (req, res) => {
-    //const errors = validationResult(req);
-    /*if (!errors.isEmpty()) {
-    console.log('nO ErrorES')*/
-
+   //Falta agarrar los errores
     const genreName = req.body.genre;
     const genre = await db.Genre.findOne({ where: { name: genreName } });
 
@@ -45,13 +43,12 @@ const moviesController = {
       genre_id: genre.id,
     };
     console.log(movie);
-
     const newMovie = await db.Movie.create(movie);
-
-    res.render("create");
+    return res.redirect("/");
   },
 
   edit: async (req, res) => {
+    
     const id = req.params.id;
     const movie = await db.Movie.findByPk(id);
     const genre = await db.Genre.findByPk(movie.genre_id);
@@ -61,24 +58,33 @@ const moviesController = {
   },
 
   update: async (req, res) => {
-    const id = req.params.id;
-    const movieToUpdate = await db.Genre.findByPk(id);
 
-    const movieUpdate = {
+ //Falta agregar los errores
+    const id = req.params.id;
+    const movie = await db.Movie.findByPk(id);
+    const genre = await db.Genre.findByPk(movie.genre_id);
+    movie.genre = genre.name;
+
+     await db.Product.update({
       title: req.body.title,
       rating: req.body.rating,
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: genre.id,
-    };
-    console.log(movie);
+      genre_id: req.body.genre
+    },{
 
-    const newMovie = await db.Movie.create(movieUpdate);
-    res.render("edit");
+    where:{
+       id: req.params.id
+      }
+   })
+
+  
+    return res.redirect("/");
   },
 
   delete: async (req, res) => {
+    //Realizar con paranoid
     await db.Product.destroy({
       where: {id: req.params.id,},
     });
