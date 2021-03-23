@@ -7,6 +7,9 @@ var logger = require('morgan');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 
+const bcryptjs = require ("bcryptjs");
+const session = require ("express-session");
+
 var app = express();
 
 // view engine setup
@@ -21,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', moviesRouter);
 app.use('/users', usersRouter);
+
+app.use(session ({
+  secret: 'secret',
+  resave: true,
+  saveUninitialed: true
+}));
 
 
 // catch 404 and forward to error handler

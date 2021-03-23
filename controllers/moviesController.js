@@ -48,7 +48,7 @@ const moviesController = {
 
     const newMovie = await db.Movie.create(movie);
 
-    res.render("create");
+   return res.redirect("/");
   },
 
   edit: async (req, res) => {
@@ -61,21 +61,25 @@ const moviesController = {
   },
 
   update: async (req, res) => {
+    
     const id = req.params.id;
-    const movieToUpdate = await db.Genre.findByPk(id);
+    const movie = await db.Movie.findByPk(id);
+    const genre = await db.Genre.findByPk(movie.genre_id);
+    movie.genre = genre.name;
 
-    const movieUpdate = {
+
+    const newMovie = {
       title: req.body.title,
       rating: req.body.rating,
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: genre.id,
+      genre_id: req.body.genre
     };
     console.log(movie);
 
-    const newMovie = await db.Movie.create(movieUpdate);
-    res.render("edit");
+    const mov = await db.Movie.create(newMovie);
+    return res.redirect("/");
   },
 
   delete: async (req, res) => {
