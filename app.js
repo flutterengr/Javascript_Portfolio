@@ -7,7 +7,6 @@ var logger = require('morgan');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 
-const bcryptjs = require ("bcryptjs");
 const session = require ("express-session");
 
 var app = express();

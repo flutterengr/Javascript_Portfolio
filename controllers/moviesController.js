@@ -52,6 +52,7 @@ const moviesController = {
   },
 
   edit: async (req, res) => {
+    
     const id = req.params.id;
     const movie = await db.Movie.findByPk(id);
     const genre = await db.Genre.findByPk(movie.genre_id);
