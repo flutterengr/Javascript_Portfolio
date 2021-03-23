@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const {check, validationResult, body} = require('express-validator');
 
 const moviesController = {
   /* Listo las peliculas en la homepage*/
@@ -29,10 +30,7 @@ const moviesController = {
   },
 
   premiere: async (req, res) => {
-    //const errors = validationResult(req);
-    /*if (!errors.isEmpty()) {
-    console.log('nO ErrorES')*/
-
+   //Falta agarrar los errores
     const genreName = req.body.genre;
     const genre = await db.Genre.findOne({ where: { name: genreName } });
 
@@ -45,10 +43,8 @@ const moviesController = {
       genre_id: genre.id,
     };
     console.log(movie);
-
     const newMovie = await db.Movie.create(movie);
-
-   return res.redirect("/");
+    return res.redirect("/");
   },
 
   edit: async (req, res) => {
@@ -62,28 +58,33 @@ const moviesController = {
   },
 
   update: async (req, res) => {
-    
+
+ //Falta agregar los errores
     const id = req.params.id;
     const movie = await db.Movie.findByPk(id);
     const genre = await db.Genre.findByPk(movie.genre_id);
     movie.genre = genre.name;
 
-
-    const newMovie = {
+     await db.Product.update({
       title: req.body.title,
       rating: req.body.rating,
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
       genre_id: req.body.genre
-    };
-    console.log(movie);
+    },{
 
-    const mov = await db.Movie.create(newMovie);
+    where:{
+       id: req.params.id
+      }
+   })
+
+  
     return res.redirect("/");
   },
 
   delete: async (req, res) => {
+    //Realizar con paranoid
     await db.Product.destroy({
       where: {id: req.params.id,},
     });

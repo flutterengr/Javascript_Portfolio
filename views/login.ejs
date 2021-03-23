@@ -7,7 +7,13 @@
     <title>Iniciar Sesion</title>
 </head>
 <body>
-    <h1>Iniciar Sesion</h1>
+
+<%if (typeof errors != 'undefined'){ for (error of errors){%>
+<li class="errors-li"><%=error.msg%></li>
+<%}}%>
+
+
+<h1>Iniciar Sesion</h1>
 
 <form action="/users/login" method="POST">
     <div id="inputs-login">
@@ -19,7 +25,7 @@
     </div>
     
     <input type="submit" value="Iniciar sesion"> 
-    
+
 </form>
 
 <h2><a href='/users/register'>Pulsa aqui para crear una cuenta</a></h2>

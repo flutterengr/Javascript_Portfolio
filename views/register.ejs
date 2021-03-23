@@ -9,6 +9,10 @@
 <body>
 <h1>Registrate</h1>
 
+<%if (typeof errors != 'undefined'){ for (error of errors){%>
+    <li class="errors-li"><%=error.msg%></li>
+    <%}}%>
+
 <form action="/users/register" method="POST" >
     <div id="inputs-register">
     

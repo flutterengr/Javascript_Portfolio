@@ -1,7 +1,5 @@
 const db = require("../database/models");
 const bycrypt = require('bcrypt');
-const fs = require('fs');
-const path = require('path');
 const {check, validationResult, body} = require('express-validator');
 
 const userController = {
@@ -45,28 +43,26 @@ const userController = {
   },
 
   processRegister: async (req, res) => {
-    console.log('Hola');
-    let errors = validationResult(req);
+    
+    /*let errors = validationResult(req);
     console      
     if (!errors.isEmpty()){
         return res.render('users/register', {errors:errors.errors})
-    } else {
+    } else {*/
         
         const user = {
             name: req.body.name,
             email: req.body.email,
-            password: bycrypt.hashSync(req.body.password, 20) 
+            password: bycrypt.hashSync(req.body.password, 10) 
         };
         console.log(user);
-        const newUser = await db.Movie.create(user);
-         
-        };
-        return res.redirect('/');
+        const newUser = await db.User.create(user);
+        return res.redirect('/')
    }
     
     
     
-};
+}
 
  
 
