@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
+const methodOverride = require('method-override');
 
 const session = require ("express-session");
 
@@ -20,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(methodOverride('_method'));
 app.use('/', moviesRouter);
 app.use('/users', usersRouter);
 

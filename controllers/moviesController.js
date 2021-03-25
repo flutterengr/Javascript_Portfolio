@@ -51,41 +51,48 @@ const moviesController = {
     
     const id = req.params.id;
     const movie = await db.Movie.findByPk(id);
-    const genre = await db.Genre.findByPk(movie.genre_id);
-    movie.genre = genre.name;
+    const genres = await db.Genre.findAll();
 
-    res.render("edit", { movie });
+
+    res.render("edit", { movie, genres });
   },
 
   update: async (req, res) => {
 
- //Falta agregar los errores
-    const id = req.params.id;
-    const movie = await db.Movie.findByPk(id);
-    const genre = await db.Genre.findByPk(movie.genre_id);
-    movie.genre = genre.name;
-
-     await db.Product.update({
+     //Falta agregar los errores
+     
+     const id = req.params.id;
+     const movie = await db.Movie.findByPk(id);
+   
+     await db.Movie.update({
+    
       title: req.body.title,
       rating: req.body.rating,
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: req.body.genre
+      genre_id: req.body.genre //solo guardo el id
+    
     },{
 
     where:{
-       id: req.params.id
+       id: movie.id
       }
    })
-
-  
+    console.log(
+    "title" + req.body.title +
+    "rating" + req.body.rating + 
+    "awards" + req.body.awards+ 
+    "length" + req.body.length+ 
+    "release_date" + req.body.releaseDate+ 
+    "genre_id" + req.body.genre)
     return res.redirect("/");
+  
   },
 
   delete: async (req, res) => {
     //Realizar con paranoid
-    await db.Product.destroy({
+    await db.Movie.destroy({
       where: {id: req.params.id,},
     });
     return res.redirect("/");
