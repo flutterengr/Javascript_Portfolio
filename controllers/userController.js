@@ -17,7 +17,7 @@ const userController = {
       req.session = userExist; //Con express-session asigno a la sesion el email del usuario encontrado
       if (req.body.remember != undefined) {
         res.cookie("userEmail", userExist.email , { maxAge: 1000 * 60 * 60 });
-                
+
       }
       return res.redirect("/");
     
@@ -47,6 +47,10 @@ const userController = {
 
     return res.redirect("/users/login");
   },
+
+  logout: async (req, res) => {
+
+  }
 };
 
 module.exports = userController;
