@@ -25,10 +25,12 @@
 
     <br>
 
-    <!--BOTON EDITAR-->
-    <form action="" method="GET">
-        <a href="/edit/<%=movie.id%>"><button type="button" class="boton5">Editar artículo</button></a>
+    <!--BOTON ELIMINAR-->
+
+    <form action="/delete/<%=movie.id%>=?_method=DELETE" method="POST"> 
+        <button type="submit" >Eliminar artículo</button> 
     </form>
+  
     <%}%> 
     
     <h2><a href="/">HOME </a></h2>

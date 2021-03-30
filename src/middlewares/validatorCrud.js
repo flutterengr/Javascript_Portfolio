@@ -1,13 +1,10 @@
-const {check, validationResult, body} = require('express-validator');
-const fs = require('fs');
-const path = require('path')
-const bycrypt = require('bcrypt');
+const {body} = require('express-validator');
 
-const movieValidator= {
+module.exports = {
     create: [
         body('title')
             .notEmpty()
-                .withMessage('Titulo de la pelicula')
+                .withMessage('El titulo de la pelicula es obligatorio')
                 .bail(),
         body('rating')
             .notEmpty()
@@ -82,4 +79,3 @@ const movieValidator= {
     ]
 }
 
-module.exports = (movieValidator)

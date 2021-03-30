@@ -8,7 +8,7 @@
 <body>
     
     <% if (loggedUser) {%>
-        <h1>Estas loggeado</h1>
+        <h3>Estas loggeado</h3>
     <%}%> 
 
     <h1>Peliculas</h1>
@@ -22,6 +22,10 @@
 
     <h2><a href="/users/login">Iniciar sesion </a></h2>
     <h2><a href="/users/register">Registrate </a></h2>
+
+    <% if (loggedUser) {%>
     <h2><a href="/users/logout">Cerrar sesion</a></h2>
+    <%}%> 
+
 </body>
 </html>

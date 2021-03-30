@@ -1,5 +1,5 @@
 const db = require("../database/models");
-const {check, validationResult, body} = require('express-validator');
+const {validationResult} = require('express-validator');
 
 const moviesController = {
   /* Listo las peliculas en la homepage*/
@@ -25,14 +25,25 @@ const moviesController = {
     res.render("detail", { movie });
   },
 
-  create: (req, res) => {
-    res.render("create");
+  create: async (req, res) => {
+    const genres = await db.Genre.findAll();
+    res.render("create", {genres});
   },
 
   premiere: async (req, res) => {
-   //Falta agarrar los errores
-    const genreName = req.body.genre;
-    const genre = await db.Genre.findOne({ where: { name: genreName } });
+    const errors = validationResult(req);
+    console.log(errors)
+    if(!errors.isEmpty){
+    const genres = await db.Genre.findAll();
+    return res.render('create', {
+      errors: errors.mapped(),
+      genres
+    });
+    
+    
+    }
+
+
 
     const movie = {
       title: req.body.title,
@@ -40,7 +51,7 @@ const moviesController = {
       awards: req.body.awards,
       length: req.body.length,
       release_date: req.body.releaseDate,
-      genre_id: genre.id,
+      genre_id: req.body.genre
     };
     console.log(movie);
     const newMovie = await db.Movie.create(movie);
