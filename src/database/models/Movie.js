@@ -1,11 +1,11 @@
 module.exports = (sequelize,DataTypes)=>{
     const alias = "Movie"
     const cols = {
-        id:{
+        id:{    
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
-        },
+        }, 
         title: {
             type: DataTypes.STRING
         },
@@ -24,13 +24,30 @@ module.exports = (sequelize,DataTypes)=>{
         genre_id: {
             type: DataTypes.INTEGER
         }
+       
+       
+    
+    
     }
+
     const config = {
         tableName: "movies",
         timestamps: false
     }
-    
-    
+     /*
+    // Relacionar con genre
+    Movie.associate = (movies) => {
+        
+        Movies.belongsTo(movies.Genre, {
+            as: 'genres',
+            foreignKey: 'genre_id'
+        });
+
+  
+
+    };*/
+
+
     return sequelize.define(alias,cols,config);
      
 

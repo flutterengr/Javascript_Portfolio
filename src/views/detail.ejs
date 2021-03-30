@@ -17,21 +17,23 @@
         <li>Actors: </li>
     </ul>
 
-
-    
-     <!--BOTON EDITAR-->
+    <% if (loggedUser.rol == 1) {%>
+    <!--BOTON EDITAR-->
     <form action="" method="GET">
         <a href="/edit/<%=movie.id%>"><button type="button" class="boton5">Editar artículo</button></a>
     </form>
 
-     <!--BOTON ELIMINAR-->
+    <br>
 
-             <form action="/delete/<%=movie.id%>=?_method=DELETE" method="POST"> <br>
-                 <button type="submit" >Eliminar artículo</button> 
-             </form>
-         </div> 
+    <!--BOTON ELIMINAR-->
 
-  <h2><a href="/">HOME </a></h2>
+    <form action="/delete/<%=movie.id%>=?_method=DELETE" method="POST"> 
+        <button type="submit" >Eliminar artículo</button> 
+    </form>
+  
+    <%}%> 
+    
+    <h2><a href="/">HOME </a></h2>
 
 
    

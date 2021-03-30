@@ -22,10 +22,9 @@ module.exports = (sequelize,DataTypes)=>{
     const config = {
         tableName: "users",
         timestamps: false
-    }
-    
-    
+    }   
     return sequelize.define(alias,cols,config);
-     
+    
+    
 
 }

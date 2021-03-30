@@ -13,6 +13,9 @@
           class="form-input"
         />
         <br />
+        <p>
+          <%= typeof errors == 'undefined' ? '' : typeof errors.title == 'undefined' ? '' : errors.title.msg %>
+        </p>
         <br />
       </div>
       <div class="col">
@@ -25,6 +28,9 @@
           class="form-input"
         />
         <br />
+        <p>
+          <%= typeof errors == 'undefined' ? '' : typeof errors.rating == 'undefined' ? '' : errors.rating.msg %>
+        </p>
         <br />
       </div>
       <div class="col">
@@ -37,6 +43,9 @@
           class="form-input"
         />
         <br />
+        <p>
+          <%= typeof errors == 'undefined' ? '' : typeof errors.awards == 'undefined' ? '' : errors.awards.msg %>
+        </p>
         <br />
       </div>
       <div class="col">
@@ -49,6 +58,9 @@
           class="form-input"
         />
         <br />
+        <p>
+          <%= typeof errors == 'undefined' ? '' : typeof errors.length == 'undefined' ? '' : errors.length.msg %>
+        </p>
         <br />
       </div>
       <div class="col">
@@ -61,25 +73,31 @@
           class="form-input"
         />
         <br />
+        <p>
+          <%= typeof errors == 'undefined' ? '' : typeof errors.releaseDate == 'undefined' ? '' : errors.releaseDate.msg %>
+        </p>
         <br />
       </div>
       <div class="col">
-        <label for="Genre" class="form-label">Genero:</label>
-        <input
-          type="text"
-          id="genre"
-          name="genre"
-          placeholder="Ej: Terror"
-          class="form-input"
-        />
-        <br />
-        <br />
+        
+        <label for="genre"> Genero : </label>    
+       
+        <select name="genre">   
+          
+          <% for (genre of genres) { %> 
+          
+                <option value="<%= genre.id %>" selected><%= genre.name %></option>
+                  
+        <% } %> 
+
+    </select>
+      
       </div>
-
+      
+      <br>
       <div class="col-2">
-        <button type="submit">Guardar pelicula</button> <br>
+        <button type="submit">Guardar pelicula</button> <br />
         <h2><a href="/">HOME </a></h2>
-
       </div>
     </div>
   </form>

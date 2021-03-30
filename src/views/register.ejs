@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrate</title>
+  </head>
+  <body>
+    <h1>Registrate</h1>
+
+    <%if (typeof errors != 'undefined'){ for (error of errors){%>
+    <li class="errors-li"><%=error.msg%></li>
+    <%}}%>
+
+    <form
+      action="/users/register"
+      method="POST"
+    >
+      <div id="inputs-register">
+        <label for="name" class="form-label">Nombre de usuario:</label>
+        <input name="name" type="text" /> <br />
+        <br />
+        <label for="email" class="form-label">Email:</label>
+        <input name="email" type="text" /> <br />
+        <br />
+        <label for="password" class="form-label">Contraseña:</label>
+        <input name="password" type="password" /> <br />
+        <br />
+
+        <button type="submit">Registrarse</button> <br>
+      </div>
+
+      <h2><a href="/users/login">Pulsa aqui si ya tienes una cuenta</a></h2>
+
+      <h2><a href="/">HOME </a></h2>
+    </form>
+  </body>
+</html>
