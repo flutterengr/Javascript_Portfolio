@@ -19,14 +19,10 @@ module.exports = {
         body('length')
             .notEmpty()
                 .withMessage("La duracion de la pelicula no puede estar vacia")
-                .custom((value)=>{
-                    return ((value.length > 40 && value.length < 220))
-                })
-                .withMessage("El valor debe ser mayor a 40 minutos y menor a 220 ")
                 .bail(),
         body('releaseDate')
              .notEmpty()
-             .withMessage('La fecha de estreno es obligatoria')
+             .withMessage('La fecha de lanzamiento es obligatoria')
                 .bail(),
         body('genre')
             .notEmpty()
@@ -55,10 +51,6 @@ module.exports = {
         body('length')
             .notEmpty()
                 .withMessage("La duracion de la pelicula no puede estar vacia")
-                .custom((value)=>{
-                    return ((value.length >40 && value.length <220))
-                })
-                .withMessage("El valor debe ser mayor a 40 minutos y menor a 220 ")
                 .bail(),
         body('releaseDate')
              .notEmpty()

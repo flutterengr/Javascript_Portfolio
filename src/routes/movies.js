@@ -10,7 +10,7 @@ router.get('/detail/:id',moviesController.detail);
 router.get('/create', admin, moviesController.create);
 router.post('/create', validator.create, moviesController.premiere);
 router.get('/edit/:id', admin, moviesController.edit);
-router.put('/edit/:id', moviesController.update);
+router.put('/edit/:id',validator.edit, moviesController.update);
 router.delete('/delete/:id', admin, moviesController.delete);
 
 

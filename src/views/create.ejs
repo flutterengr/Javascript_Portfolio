@@ -20,12 +20,13 @@
           type="text"
           id="title"
           name="title"
+          value="<%= typeof old == 'undefined' ? '' : old.title %>"
           placeholder="Ej: Pokemon"
           class="form-input"
         />
         <br />
         <p>
-          <%= typeof errors == 'undefined' ? '' : typeof errors.title == 'undefined' ? '' : errors.title.msg %>
+         
         </p>
         <br />
       </div>
@@ -35,12 +36,13 @@
           type="text"
           id="rating"
           name="rating"
+          value="<%= typeof old == 'undefined' ? '' : old.rating %>"
           placeholder="Ej: 8"
           class="form-input"
         />
         <br />
         <p>
-          <%= typeof errors == 'undefined' ? '' : typeof errors.rating == 'undefined' ? '' : errors.rating.msg %>
+  
         </p>
         <br />
       </div>
@@ -50,12 +52,13 @@
           type="text"
           id="awards"
           name="awards"
+          value="<%= typeof old == 'undefined' ? '' : old.awards %>"
           placeholder="Ej: 6"
           class="form-input"
         />
         <br />
         <p>
-          <%= typeof errors == 'undefined' ? '' : typeof errors.awards == 'undefined' ? '' : errors.awards.msg %>
+          
         </p>
         <br />
       </div>
@@ -65,12 +68,13 @@
           type="text"
           id="length"
           name="length"
+          value="<%= typeof old == 'undefined' ? '' : old.length %>"
           placeholder="Ej: 120"
           class="form-input"
         />
         <br />
         <p>
-          <%= typeof errors == 'undefined' ? '' : typeof errors.length == 'undefined' ? '' : errors.length.msg %>
+         
         </p>
         <br />
       </div>
@@ -80,12 +84,13 @@
           type="text"
           id="releaseDate"
           name="releaseDate"
+          value="<%= typeof old == 'undefined' ? '' : old.releaseDate %>"
           placeholder="Ej: Sun Oct 03 2010 21:00:00 GMT-0300 (GMT-03:00)"
           class="form-input"
         />
         <br />
         <p>
-          <%= typeof errors == 'undefined' ? '' : typeof errors.releaseDate == 'undefined' ? '' : errors.releaseDate.msg %>
+         
         </p>
         <br />
       </div>

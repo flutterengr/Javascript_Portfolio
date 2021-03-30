@@ -37,7 +37,7 @@ const moviesController = {
     const genres = await db.Genre.findAll();
 
     if (!errors.isEmpty()) {
-        res.render('create', {
+    return res.render('create', {
             movie: movie2,
             genres,
             errors: errors.errors,
@@ -72,10 +72,10 @@ const moviesController = {
   update: async (req, res) => {
 
     const errors = validationResult(req);
-    const genres = await db.genres.findAll();
+    const genres = await db.Genre.findAll();
 
     if (!errors.isEmpty()) {
-        res.render('edit', {
+    return res.render('edit', {
             errors: errors.errors,
             genres
         });
