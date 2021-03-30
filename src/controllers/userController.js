@@ -9,18 +9,15 @@ const userController = {
 
   processLogin: async (req, res) => {
     const pass = req.body.password;
-    const users = await db.User.findAll(); //Traigo todos los usuarios
-    const userExist = users.find((user) => user.email == req.body.email);
-    const compare = bcrypt.compareSync(pass, userExist.password); //Comparo contraseña del req con la de los usuarios
+    const user = await db.User.findOne( { where: {email: req.body.email},} ); 
+    const compare = bcrypt.compareSync(pass, user.password); //Comparo contraseña del req con la de los usuarios
 
-    if (userExist && compare) {
-      req.session = userExist; //Con express-session asigno a la sesion el email del usuario encontrado
+    if (user && compare) {
+      req.session.user = user; //Con express-session asigno a la sesion el email del usuario encontrado
       if (req.body.remember != undefined) {
-        res.cookie("userEmail", userExist.email , { maxAge: 1000 * 60 * 60 });
-
+        res.cookie("user_id", user.id , { maxAge: 1000 * 60 * 60 });
       }
       return res.redirect("/");
-    
     } 
     
   },
@@ -49,7 +46,9 @@ const userController = {
   },
 
   logout: async (req, res) => {
-
+    req.session.destroy();
+    res.clearCookie('user_id');
+    return res.redirect('/users/login');
   }
 };
 
