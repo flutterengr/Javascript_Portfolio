@@ -55,7 +55,6 @@ const moviesController = {
       release_date: req.body.releaseDate,
       genre_id: req.body.genre
     };
-    console.log(movie);
     const newMovie = await db.Movie.create(movie);
     return res.redirect("/");
   },
@@ -100,13 +99,7 @@ const moviesController = {
        id: movie.id
       }
    })
-    console.log(
-    "title" + req.body.title +
-    "rating" + req.body.rating + 
-    "awards" + req.body.awards+ 
-    "length" + req.body.length+ 
-    "release_date" + req.body.releaseDate+ 
-    "genre_id" + req.body.genre)
+
     return res.redirect("/");
   
   },

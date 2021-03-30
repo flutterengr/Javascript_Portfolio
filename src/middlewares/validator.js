@@ -20,8 +20,7 @@ module.exports = {
             .notEmpty()
                 .withMessage("La duracion de la pelicula no puede estar vacia")
                 .custom((value)=>{
-                    console.log(value.length)
-                    return ((value.length >40 && value.length <220))
+                    return ((value.length > 40 && value.length < 220))
                 })
                 .withMessage("El valor debe ser mayor a 40 minutos y menor a 220 ")
                 .bail(),
@@ -33,11 +32,10 @@ module.exports = {
             .notEmpty()
             .withMessage('El genero es obligatorio')
             .custom(function (value) {
-                console.log(value)
                      return ((value == '1' || value == '2' || value == '3' || value == '4' || value == '5' || value == '6' || value == '7' || value == '8'|| value == '9'|| value == '10' || value == '11' || value == '12' ))
                     })
             .withMessage("El genero de las peliculas solo pueden ser: Accion, Drama, Comedia, Terror, Drama, Aventuras, Musical, Fantasia, Infantiles, Suspenso, Documental o accion ")
-            .bail()    
+
         ],
     edit: [
         body('title')
@@ -58,7 +56,6 @@ module.exports = {
             .notEmpty()
                 .withMessage("La duracion de la pelicula no puede estar vacia")
                 .custom((value)=>{
-                    console.log(value.length)
                     return ((value.length >40 && value.length <220))
                 })
                 .withMessage("El valor debe ser mayor a 40 minutos y menor a 220 ")
@@ -70,8 +67,7 @@ module.exports = {
         body('genre')
             .notEmpty()
             .withMessage('El genero es obligatorio')
-
-            .bail()
+           
     ]
 }
 

@@ -33,14 +33,6 @@ const userController = {
       email: req.body.email,
       password: password,
     });
-    console.log(
-      "name:" +
-        req.body.name +
-        "email:" +
-        req.body.email +
-        "password:" +
-        password
-    );
 
     return res.redirect("/users/login");
   },
