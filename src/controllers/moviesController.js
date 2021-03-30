@@ -31,16 +31,18 @@ const moviesController = {
   },
 
   premiere: async (req, res) => {
+    
     const errors = validationResult(req);
-    console.log(errors)
-    if(!errors.isEmpty){
+    let movie2 = undefined;
     const genres = await db.Genre.findAll();
-    return res.render('create', {
-      errors: errors.mapped(),
-      genres
-    });
-    
-    
+
+    if (!errors.isEmpty()) {
+        res.render('create', {
+            movie: movie2,
+            genres,
+            errors: errors.errors,
+            old: req.body
+        });
     }
 
 
@@ -70,7 +72,15 @@ const moviesController = {
 
   update: async (req, res) => {
 
-     //Falta agregar los errores
+    const errors = validationResult(req);
+    const genres = await db.genres.findAll();
+
+    if (!errors.isEmpty()) {
+        res.render('edit', {
+            errors: errors.errors,
+            genres
+        });
+    }
      
      const id = req.params.id;
      const movie = await db.Movie.findByPk(id);

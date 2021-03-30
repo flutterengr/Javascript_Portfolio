@@ -34,7 +34,7 @@ module.exports = {
             .withMessage('El genero es obligatorio')
             .custom(function (value) {
                 console.log(value)
-                     return ((value == 'Accion' || value == 'Drama' || value == 'Comedia' || value == 'Terror' || value == 'Drama' || value == 'Aventuras' || value == 'Musical' || value == 'Fantasia'|| value == 'Infantiles'|| value == 'Ciencia Ficcion' || value == 'Suspenso' || value == 'Documental' ))
+                     return ((value == '1' || value == '2' || value == '3' || value == '4' || value == '5' || value == '6' || value == '7' || value == '8'|| value == '9'|| value == '10' || value == '11' || value == '12' ))
                     })
             .withMessage("El genero de las peliculas solo pueden ser: Accion, Drama, Comedia, Terror, Drama, Aventuras, Musical, Fantasia, Infantiles, Suspenso, Documental o accion ")
             .bail()    
@@ -70,11 +70,7 @@ module.exports = {
         body('genre')
             .notEmpty()
             .withMessage('El genero es obligatorio')
-            .custom(function (value) {
-                console.log(value)
-                     return ((value == 'Accion' || value == 'Drama' || value == 'Comedia' || value == 'Terror' || value == 'Drama' || value == 'Aventuras' || value == 'Musical' || value == 'Fantasia'|| value == 'Infantiles'|| value == 'Ciencia Ficcion' || value == 'Suspenso' || value == 'Documental' ))
-                    })
-            .withMessage("El genero de las peliculas solo pueden ser: Accion, Drama, Comedia, Terror, Drama, Aventuras, Musical, Fantasia, Infantiles, Suspenso, Documental o accion ")
+
             .bail()
     ]
 }

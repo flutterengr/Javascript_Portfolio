@@ -1,7 +1,18 @@
 <div class="container products-wrapper">
-  <h1 class="products-title">Formulario de creación de Pelis</h1>
+  <h1 class="products-title">Formulario de Creación de Peliculas</h1>
 
+
+  
   <form action="/create" method="POST">
+
+    <% if(typeof errors !== 'undefined') {%>
+      <ul>
+        <% for(error of errors) {%>
+        <li><%= error.msg %></li>
+        <% } %> 
+      </ul>
+    <% } %> 
+
     <div class="product-detail">
       <div class="col">
         <label for="title" class="form-label">Titulo de la pelicula:</label>
@@ -93,7 +104,7 @@
     </select>
       
       </div>
-      
+
       <br>
       <div class="col-2">
         <button type="submit">Guardar pelicula</button> <br />
