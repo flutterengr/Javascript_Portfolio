@@ -1,4 +1,4 @@
-//Para crear la cookie con el usuario loggeado
+//Para crear la cookie ya sea con la sesion loggeado o deslogueada
 const db = require('../database/models');
 
 
