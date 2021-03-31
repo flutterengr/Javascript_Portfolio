@@ -34,18 +34,7 @@ module.exports = (sequelize,DataTypes)=>{
         tableName: "movies",
         timestamps: false
     }
-     /*
-    // Relacionar con genre
-    Movie.associate = (movies) => {
-        
-        Movies.belongsTo(movies.Genre, {
-            as: 'genres',
-            foreignKey: 'genre_id'
-        });
-
-  
-
-    };*/
+     //Relaciones
 
 
     return sequelize.define(alias,cols,config);

@@ -16,11 +16,11 @@ const moviesController = {
     const genre = await db.Genre.findByPk(movie.genre_id);
     movie.genre = genre.name;
 
-    /* Logica actores
-      const actor_movie = await db.Actor_Movie.findByPk(id);
-      const actor = await db.Actor.findByPk(actor_movie.actor_id)
-      actor_movie.name = actor.first_name;
-    */
+    // Logica para traer los actores
+
+
+    
+ 
 
     res.render("detail", { movie });
   },
@@ -31,16 +31,18 @@ const moviesController = {
   },
 
   premiere: async (req, res) => {
+    
     const errors = validationResult(req);
-    console.log(errors)
-    if(!errors.isEmpty){
+    let movie2 = undefined;
     const genres = await db.Genre.findAll();
+
+    if (!errors.isEmpty()) {
     return res.render('create', {
-      errors: errors.mapped(),
-      genres
-    });
-    
-    
+            movie: movie2,
+            genres,
+            errors: errors.errors,
+            old: req.body
+        });
     }
 
 
@@ -53,7 +55,6 @@ const moviesController = {
       release_date: req.body.releaseDate,
       genre_id: req.body.genre
     };
-    console.log(movie);
     const newMovie = await db.Movie.create(movie);
     return res.redirect("/");
   },
@@ -70,7 +71,15 @@ const moviesController = {
 
   update: async (req, res) => {
 
-     //Falta agregar los errores
+    const errors = validationResult(req);
+    const genres = await db.Genre.findAll();
+
+    if (!errors.isEmpty()) {
+    return res.render('edit', {
+            errors: errors.errors,
+            genres
+        });
+    }
      
      const id = req.params.id;
      const movie = await db.Movie.findByPk(id);
@@ -90,13 +99,7 @@ const moviesController = {
        id: movie.id
       }
    })
-    console.log(
-    "title" + req.body.title +
-    "rating" + req.body.rating + 
-    "awards" + req.body.awards+ 
-    "length" + req.body.length+ 
-    "release_date" + req.body.releaseDate+ 
-    "genre_id" + req.body.genre)
+
     return res.redirect("/");
   
   },

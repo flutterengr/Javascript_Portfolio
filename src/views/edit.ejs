@@ -3,6 +3,14 @@
   
     <form action="/edit/<%= movie.id %>?_method=PUT" method="POST"  enctype="application/x-www-form-urlencoded" >
 
+      <% if(typeof errors !== 'undefined') {%>
+        <ul>
+          <% for(error of errors) {%>
+            <li><%= error.msg %></li>
+          <% } %> 
+        </ul>
+      <% } %> 
+      
       <div class="product-detail">
         <div class="col">
           <label for="title" class="form-label">Titulo de la pelicula:</label>
